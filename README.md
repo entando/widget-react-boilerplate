@@ -4,65 +4,78 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 In the project directory, you can run:
 
-### `npm start`
+### `yarn start`
 
 Runs the app in the development mode.<br>
+
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
 The page will reload if you make edits.<br>
+
 You will also see any lint errors in the console.
 
-### `npm test`
+### `yarn test`
 
 Launches the test runner in the interactive watch mode.<br>
+
 See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `npm run build`
+### `yarn build`
 
 Builds the app for production to the `build` folder.<br>
+
 It correctly bundles React in production mode and optimizes the build for the best performance.
 
 The build is minified and the filenames include the hashes.<br>
+
 Your app is ready to be deployed!
 
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `npm run eject`
+### `yarn lint`
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+Runs Eslint to the root folder and fix all the issues that can be handled automatically.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Linter
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+This project is extending the [Airbnb Style Guide](https://github.com/airbnb/javascript) eslint rules, and applying custom rules to improve code quality.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+Any custom rules needs to be added to the section below
 
-## Learn More
+### Custom rules
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+- [react/jsx-filename-extension](https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-filename-extension.md) - allows utilization of JSX inside of a .js file;
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+- [global-require](https://eslint.org/docs/rules/global-require) - disable global require, so we could use global variable as `document` without having to use `global.document`;
 
-### Code Splitting
+## Folder structure
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+This folder structure is a mix of patterns but it takes some reference from entando-pwa project
 
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+- ./src
+  - ./assets `--> place to store our assets like images, fonts, custom icons, etc.`
+    - ./imgs
+  - ./components `--> All components and containers`
+    - ./App `--> example of component that could have container`
+      - App.js `--> keep the same name as component folder so we can find it easily when doing a file search`
+      - App.test.js `--> the idea is keep the test files together with the source, to make our life easier`
+      - App.container.js `--> containers aren't React components, so I prefer to use the dot syntaxe here`
+      - App.css or styles.js `--> styles file that could be either .css, .sass, or even JSS`
+      - index.js `--> default file to handle import`
+    - ./common `--> folder to put common components`
+      - ./ComponentExample
+        - ComponentExample.js
+        - ComponentExample.test.js
+        - index.js
+  - ./services `--> api calls, auth services, i18n`
+    - ./api
+    - ./auth
+    - ./i18n
+  - ./state `--> all logic behind the application organized by feature`
+    - ./feature-example `--> folders organized by feature`
+      - feature-example.actions.js
+      - feature-example.reducer.js
+      - feature-example.selectors.js
+      - feature-example.types.js
+    - store.js `--> configure redux store`
+  - index.js `--> entry point`
