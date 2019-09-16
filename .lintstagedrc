@@ -1,7 +1,0 @@
-{
-    "*.js": [
-        "pretty-quick --staged",
-        "yarn lint",
-        "git add"
-    ]
-}
