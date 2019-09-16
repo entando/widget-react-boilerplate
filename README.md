@@ -59,7 +59,7 @@ This folder structure is a mix of patterns but it takes some reference from enta
     - ./App `--> example of component that could have container`
       - App.js `--> keep the same name as component folder so we can find it easily when doing a file search`
       - App.test.js `--> the idea is keep the test files together with the source, to make our life easier`
-      - App.container.js `--> containers aren't React components, so I prefer to use the dot syntaxe here`
+      - AppContainer.js `--> container for the App component`
       - App.css or styles.js `--> styles file that could be either .css, .sass, or even JSS`
       - index.js `--> default file to handle import`
     - ./common `--> folder to put common components`
