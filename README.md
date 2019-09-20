@@ -38,44 +38,27 @@ Runs Eslint to the root folder and fix all the issues that can be handled automa
 
 ## Linter
 
-This project is extending the [Airbnb Style Guide](https://github.com/airbnb/javascript) eslint rules, and applying custom rules to improve code quality.
-
-Any custom rules needs to be added to the section below
-
-### Custom rules
-
-- [react/jsx-filename-extension](https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-filename-extension.md) - allows utilization of JSX inside of a .js file;
-
-- [global-require](https://eslint.org/docs/rules/global-require) - disable global require, so we could use global variable as `document` without having to use `global.document`;
+This project is extending the [Airbnb Style Guide](https://github.com/airbnb/javascript) eslint rules, and applying custom rules (see package.json) to improve code quality.
 
 ## Folder structure
 
-This folder structure is a mix of patterns but it takes some reference from entando-pwa project
-
 - ./src
-  - ./assets `--> place to store our assets like images, fonts, custom icons, etc.`
-    - ./imgs
-  - ./components `--> All components and containers`
+  - ./assets `--> place to store assets like images, fonts, custom icons, etc.`
+  - ./api `--> api calls, grouped by feature: the structure should mimic the api call itself`
+  - ./components
+    - ./\_\_tests\_\_ `sample test folder`
+      - App.test.js `--> this way test files are closer to other ones, but in a separate folder in order to keep the folder structure cleaner`
+    - ./common `--> folder containing common components`
+      - CommonComponent.js
     - ./App `--> example of component that could have container`
+      - App.css
       - App.js `--> keep the same name as component folder so we can find it easily when doing a file search`
-      - App.test.js `--> the idea is keep the test files together with the source, to make our life easier`
-      - AppContainer.js `--> container for the App component`
-      - App.css or styles.js `--> styles file that could be either .css, .sass, or even JSS`
-      - index.js `--> default file to handle import`
-    - ./common `--> folder to put common components`
-      - ./ComponentExample
-        - ComponentExample.js
-        - ComponentExample.test.js
-        - index.js
-  - ./services `--> api calls, auth services, i18n`
-    - ./api
-    - ./auth
-    - ./i18n
-  - ./state `--> all logic behind the application organized by feature`
-    - ./feature-example `--> folders organized by feature`
-      - feature-example.actions.js
-      - feature-example.reducer.js
-      - feature-example.selectors.js
-      - feature-example.types.js
+      - AppContainer.js `--> container for the App component, adds state`
+  - ./state `--> application state (e.g. redux), if any`
+    - ./sample-feature `--> grouping by feature`
+      - sample-feature.actions.js
+      - sample-feature.reducer.js
+      - sample-feature.selectors.js
+      - sample-feature.types.js
     - store.js `--> configure redux store`
   - index.js `--> entry point`

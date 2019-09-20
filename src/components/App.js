@@ -1,11 +1,11 @@
 import React from 'react';
-import './App.css';
+import 'components/App.css';
+import CommonComponent from 'components/common/CommonComponent';
 
 function App() {
   return (
     <div className="App">
-      <h1>Entando</h1>
-      <h2>React Widget Boilerplate</h2>
+      <CommonComponent />
     </div>
   );
 }
